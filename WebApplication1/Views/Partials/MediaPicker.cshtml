@@ -1,0 +1,85 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@if (Model.Content.HasValue("mediaPicker"))
+{
+    var imgList = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("mediaPicker");
+    var GetBanners= WebApplication1.PagesModel.HomeTopBannerRenderer.GetBanners(imgList);
+    
+    foreach (var bannerOrGroup in GetBanners)
+    {
+       if (bannerOrGroup is WebApplication1.PagesModel.HomeTopBanner)
+       {
+            var url= ((WebApplication1.PagesModel.HomeTopBanner) bannerOrGroup).Image;
+            var classText= "col-4 col-sm-4 col-lg-4 nopadding";
+            if (((WebApplication1.PagesModel.HomeTopBanner) bannerOrGroup).Size== WebApplication1.PagesModel.HomeTopBannerSize.Big)
+            {
+                classText= "col-8 col-sm-8 col-lg-8";
+            }
+            
+            <div class='@classText'>
+            <div class="videos">
+                <a href="https://www.youtube.com/watch?v=F5FEj9U-CJM" class="video" data-toggle="lightbox">
+
+                    <div class="item bigImage" class="lightbox">
+                        <span></span>
+                        <img src='@url' />
+                       
+                        <div class="item-overlay top">
+                        </div>
+                    </div>
+                </a>
+            </div>
+     </div>  
+ 
+       
+            
+       }
+       if (bannerOrGroup is WebApplication1.PagesModel.HomeTopBannerGroup)
+       {
+       
+            var subBanners= ((WebApplication1.PagesModel.HomeTopBannerGroup) bannerOrGroup).List;
+           
+            <div class="col-4 col-sm-4 col-lg-4">
+            <div class="videos">
+                <a href="https://www.youtube.com/watch?v=F5FEj9U-CJM" class="video" data-toggle="lightbox">
+
+                    <div class="item smallImage">
+                        <span></span>
+                        <img src='@subBanners.ElementAt(0).Image' />
+                       
+                        <div class="item-overlay top">
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+                        <div class="videos">
+                <a href="https://www.youtube.com/watch?v=F5FEj9U-CJM" class="video" data-toggle="lightbox">
+
+                    <div class="item smallImage">
+                        <span></span>
+                        <img src='@subBanners.ElementAt(1).Image' />
+                       
+                        <div class="item-overlay top">
+                        </div>
+                    </div>
+                </a>
+            </div>
+     
+
+        </div>
+ 
+            
+            
+        
+        
+            
+       }
+     
+ 
+
+
+
+    }
+    
+}

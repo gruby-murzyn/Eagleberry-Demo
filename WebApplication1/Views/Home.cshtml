@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master.cshtml";
+    
+}
+
+  
+  <div class="container content">
+  <div class="row">
+
+  @Umbraco.Field("blogPost")
+</div>
+
+  </div>
+         
