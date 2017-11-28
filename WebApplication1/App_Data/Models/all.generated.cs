@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "b3a89569e94ebde4")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.4")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "f4056b71d333d6d6")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
 // FILE: models.generated.cs
@@ -171,6 +171,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// carouselImages
+		///</summary>
+		[ImplementPropertyType("carouselImages")]
+		public IEnumerable<IPublishedContent> CarouselImages
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("carouselImages"); }
+		}
+
+		///<summary>
 		/// Eagle Description
 		///</summary>
 		[ImplementPropertyType("eagleDescription")]
@@ -310,16 +319,16 @@ namespace Umbraco.Web.PublishedContentModels
 		public static bool GetUmbracoNavihide(INavigationBase that) { return that.GetPropertyValue<bool>("umbracoNavihide"); }
 	}
 
-	/// <summary>Projects</summary>
-	[PublishedContentModel("projects")]
-	public partial class Projects : PublishedContentModel
+	/// <summary>Content Page</summary>
+	[PublishedContentModel("contentPage")]
+	public partial class ContentPage : PublishedContentModel, IContentBase, INavigationBase
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "projects";
+		public new const string ModelTypeAlias = "contentPage";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Projects(IPublishedContent content)
+		public ContentPage(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -330,131 +339,27 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Projects, TValue>> selector)
-		{
-			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-	}
-
-	/// <summary>Demo</summary>
-	[PublishedContentModel("demo")]
-	public partial class Demo : Projects
-	{
-#pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "demo";
-		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
-#pragma warning restore 0109
-
-		public Demo(IPublishedContent content)
-			: base(content)
-		{ }
-
-#pragma warning disable 0109 // new is redundant
-		public new static PublishedContentType GetModelContentType()
-		{
-			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
-		}
-#pragma warning restore 0109
-
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Demo, TValue>> selector)
-		{
-			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-	}
-
-	/// <summary>Demo1</summary>
-	[PublishedContentModel("demo1")]
-	public partial class Demo1 : Projects
-	{
-#pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "demo1";
-		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
-#pragma warning restore 0109
-
-		public Demo1(IPublishedContent content)
-			: base(content)
-		{ }
-
-#pragma warning disable 0109 // new is redundant
-		public new static PublishedContentType GetModelContentType()
-		{
-			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
-		}
-#pragma warning restore 0109
-
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Demo1, TValue>> selector)
-		{
-			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-	}
-
-	/// <summary>Demo2</summary>
-	[PublishedContentModel("demo2")]
-	public partial class Demo2 : Projects
-	{
-#pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "demo2";
-		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
-#pragma warning restore 0109
-
-		public Demo2(IPublishedContent content)
-			: base(content)
-		{ }
-
-#pragma warning disable 0109 // new is redundant
-		public new static PublishedContentType GetModelContentType()
-		{
-			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
-		}
-#pragma warning restore 0109
-
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Demo2, TValue>> selector)
-		{
-			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-	}
-
-	/// <summary>Blog</summary>
-	[PublishedContentModel("blog")]
-	public partial class Blog : PublishedContentModel, IContentBase, INavigationBase
-	{
-#pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "blog";
-		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
-#pragma warning restore 0109
-
-		public Blog(IPublishedContent content)
-			: base(content)
-		{ }
-
-#pragma warning disable 0109 // new is redundant
-		public new static PublishedContentType GetModelContentType()
-		{
-			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
-		}
-#pragma warning restore 0109
-
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Blog, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ContentPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Disqus Shortname: To use comments, you'll need to sign up for Disqus and enter your shortname here (more info: https://help.disqus.com/customer/portal/articles/472097-universal-embed-code)
+		/// media demo
 		///</summary>
-		[ImplementPropertyType("disqusShortname")]
-		public string DisqusShortname
+		[ImplementPropertyType("mediaDemo")]
+		public IHtmlString MediaDemo
 		{
-			get { return this.GetPropertyValue<string>("disqusShortname"); }
+			get { return this.GetPropertyValue<IHtmlString>("mediaDemo"); }
 		}
 
 		///<summary>
-		/// How many posts should be shown?
+		/// Video Banner
 		///</summary>
-		[ImplementPropertyType("howManyPostsShouldBeShown")]
-		public decimal HowManyPostsShouldBeShown
+		[ImplementPropertyType("videoBanner")]
+		public IEnumerable<IPublishedContent> VideoBanner
 		{
-			get { return this.GetPropertyValue<decimal>("howManyPostsShouldBeShown"); }
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("videoBanner"); }
 		}
 
 		///<summary>
@@ -503,16 +408,16 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 	}
 
-	/// <summary>Blogpost</summary>
-	[PublishedContentModel("blogpost")]
-	public partial class Blogpost : PublishedContentModel, INavigationBase
+	/// <summary>Articulate</summary>
+	[PublishedContentModel("Articulate")]
+	public partial class Articulate : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "blogpost";
+		public new const string ModelTypeAlias = "Articulate";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Blogpost(IPublishedContent content)
+		public Articulate(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -523,22 +428,333 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Blogpost, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Articulate, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Content
+		/// Blog Banner: Optional blog banner
 		///</summary>
-		[ImplementPropertyType("bodyText")]
-		public Newtonsoft.Json.Linq.JToken BodyText
+		[ImplementPropertyType("blogBanner")]
+		public Umbraco.Web.Models.ImageCropDataSet BlogBanner
 		{
-			get { return this.GetPropertyValue<Newtonsoft.Json.Linq.JToken>("bodyText"); }
+			get { return this.GetPropertyValue<Umbraco.Web.Models.ImageCropDataSet>("blogBanner"); }
 		}
 
 		///<summary>
-		/// Categories(tags)
+		/// Blog Description
+		///</summary>
+		[ImplementPropertyType("blogDescription")]
+		public string BlogDescription
+		{
+			get { return this.GetPropertyValue<string>("blogDescription"); }
+		}
+
+		///<summary>
+		/// Blog Logo: Optional logo
+		///</summary>
+		[ImplementPropertyType("blogLogo")]
+		public Umbraco.Web.Models.ImageCropDataSet BlogLogo
+		{
+			get { return this.GetPropertyValue<Umbraco.Web.Models.ImageCropDataSet>("blogLogo"); }
+		}
+
+		///<summary>
+		/// Blog Title
+		///</summary>
+		[ImplementPropertyType("blogTitle")]
+		public string BlogTitle
+		{
+			get { return this.GetPropertyValue<string>("blogTitle"); }
+		}
+
+		///<summary>
+		/// Categories Page Name: The page title for the categories listing
+		///</summary>
+		[ImplementPropertyType("categoriesPageName")]
+		public string CategoriesPageName
+		{
+			get { return this.GetPropertyValue<string>("categoriesPageName"); }
+		}
+
+		///<summary>
+		/// Categories Url Name
+		///</summary>
+		[ImplementPropertyType("categoriesUrlName")]
+		public string CategoriesUrlName
+		{
+			get { return this.GetPropertyValue<string>("categoriesUrlName"); }
+		}
+
+		///<summary>
+		/// Custom RSS Feed Url: Optional custom rss feed URL (i.e. if you use feedburner, etc...)
+		///</summary>
+		[ImplementPropertyType("customRssFeedUrl")]
+		public string CustomRssFeedUrl
+		{
+			get { return this.GetPropertyValue<string>("customRssFeedUrl"); }
+		}
+
+		///<summary>
+		/// Disqus Shortname
+		///</summary>
+		[ImplementPropertyType("disqusShortname")]
+		public string DisqusShortname
+		{
+			get { return this.GetPropertyValue<string>("disqusShortname"); }
+		}
+
+		///<summary>
+		/// Extract First Image to Property: When Windows Live Writer (or compatible WebBlog API tool) is used to create blog posts, with this option enabled it will set the first image found in the blog post to the blog's image property if one is found.
+		///</summary>
+		[ImplementPropertyType("extractFirstImage")]
+		public bool ExtractFirstImage
+		{
+			get { return this.GetPropertyValue<bool>("extractFirstImage"); }
+		}
+
+		///<summary>
+		/// Google Analytics Id: Your Google Analytics Id (i.e. UA-123456789 )
+		///</summary>
+		[ImplementPropertyType("googleAnalyticsId")]
+		public string GoogleAnalyticsId
+		{
+			get { return this.GetPropertyValue<string>("googleAnalyticsId"); }
+		}
+
+		///<summary>
+		/// Google Analytics Name: The site name associated with your Google Analytics (i.e. mysite.com )
+		///</summary>
+		[ImplementPropertyType("googleAnalyticsName")]
+		public string GoogleAnalyticsName
+		{
+			get { return this.GetPropertyValue<string>("googleAnalyticsName"); }
+		}
+
+		///<summary>
+		/// PageSize
+		///</summary>
+		[ImplementPropertyType("pageSize")]
+		public int PageSize
+		{
+			get { return this.GetPropertyValue<int>("pageSize"); }
+		}
+
+		///<summary>
+		/// Redirect Archive: If specified this will redirect the Archive blog post container URL to this Articulate blog root
+		///</summary>
+		[ImplementPropertyType("redirectArchive")]
+		public bool RedirectArchive
+		{
+			get { return this.GetPropertyValue<bool>("redirectArchive"); }
+		}
+
+		///<summary>
+		/// Search Page Name: The page title for the search results
+		///</summary>
+		[ImplementPropertyType("searchPageName")]
+		public string SearchPageName
+		{
+			get { return this.GetPropertyValue<string>("searchPageName"); }
+		}
+
+		///<summary>
+		/// Search Url Name
+		///</summary>
+		[ImplementPropertyType("searchUrlName")]
+		public string SearchUrlName
+		{
+			get { return this.GetPropertyValue<string>("searchUrlName"); }
+		}
+
+		///<summary>
+		/// Tags Page Name: The page title for the tags listing
+		///</summary>
+		[ImplementPropertyType("tagsPageName")]
+		public string TagsPageName
+		{
+			get { return this.GetPropertyValue<string>("tagsPageName"); }
+		}
+
+		///<summary>
+		/// Tags Url Name
+		///</summary>
+		[ImplementPropertyType("tagsUrlName")]
+		public string TagsUrlName
+		{
+			get { return this.GetPropertyValue<string>("tagsUrlName"); }
+		}
+
+		///<summary>
+		/// Theme
+		///</summary>
+		[ImplementPropertyType("theme")]
+		public object Theme
+		{
+			get { return this.GetPropertyValue("theme"); }
+		}
+
+		///<summary>
+		/// Use yyyy/mm/dd format for Url: If specified, this will generate posts' urls in the /yyyy/mm/dd/slug format, ie 2017/06/09/codegarden-rocks
+		///</summary>
+		[ImplementPropertyType("useDateFormatForUrl")]
+		public bool UseDateFormatForUrl
+		{
+			get { return this.GetPropertyValue<bool>("useDateFormatForUrl"); }
+		}
+	}
+
+	/// <summary>Articulate Archive</summary>
+	[PublishedContentModel("ArticulateArchive")]
+	public partial class ArticulateArchive : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "ArticulateArchive";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ArticulateArchive(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ArticulateArchive, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Umbraco Url Name: The Umbraco Url Name for this node, this will be the prefix URL for each blog post
+		///</summary>
+		[ImplementPropertyType("umbracoUrlName")]
+		public string UmbracoUrlName
+		{
+			get { return this.GetPropertyValue<string>("umbracoUrlName"); }
+		}
+	}
+
+	/// <summary>Articulate Author</summary>
+	[PublishedContentModel("ArticulateAuthor")]
+	public partial class ArticulateAuthor : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "ArticulateAuthor";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ArticulateAuthor(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ArticulateAuthor, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Author Bio: Description of the author
+		///</summary>
+		[ImplementPropertyType("authorBio")]
+		public string AuthorBio
+		{
+			get { return this.GetPropertyValue<string>("authorBio"); }
+		}
+
+		///<summary>
+		/// Author Image
+		///</summary>
+		[ImplementPropertyType("authorImage")]
+		public Umbraco.Web.Models.ImageCropDataSet AuthorImage
+		{
+			get { return this.GetPropertyValue<Umbraco.Web.Models.ImageCropDataSet>("authorImage"); }
+		}
+
+		///<summary>
+		/// Author Url: A url to link to the author's website
+		///</summary>
+		[ImplementPropertyType("authorUrl")]
+		public string AuthorUrl
+		{
+			get { return this.GetPropertyValue<string>("authorUrl"); }
+		}
+	}
+
+	/// <summary>Articulate Authors</summary>
+	[PublishedContentModel("ArticulateAuthors")]
+	public partial class ArticulateAuthors : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "ArticulateAuthors";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ArticulateAuthors(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ArticulateAuthors, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+	}
+
+	/// <summary>Articulate Post</summary>
+	[PublishedContentModel("ArticulatePost")]
+	public partial class ArticulatePost : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "ArticulatePost";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ArticulatePost(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ArticulatePost, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Author
+		///</summary>
+		[ImplementPropertyType("author")]
+		public string Author
+		{
+			get { return this.GetPropertyValue<string>("author"); }
+		}
+
+		///<summary>
+		/// Categories
 		///</summary>
 		[ImplementPropertyType("categories")]
 		public IEnumerable<string> Categories
@@ -547,7 +763,16 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Excerpt: Introduction to your blog post. This is also used in the summaries on the front of the blog as well as the homepage
+		/// Enable Comments
+		///</summary>
+		[ImplementPropertyType("enableComments")]
+		public bool EnableComments
+		{
+			get { return this.GetPropertyValue<bool>("enableComments"); }
+		}
+
+		///<summary>
+		/// Excerpt
 		///</summary>
 		[ImplementPropertyType("excerpt")]
 		public string Excerpt
@@ -556,39 +781,136 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Page Title
+		/// Import Id: Used during a blogml import process to ensure that re-importing does not create duplicate posts.
 		///</summary>
-		[ImplementPropertyType("pageTitle")]
-		public string PageTitle
+		[ImplementPropertyType("importId")]
+		public string ImportId
 		{
-			get { return this.GetPropertyValue<string>("pageTitle"); }
+			get { return this.GetPropertyValue<string>("importId"); }
 		}
 
 		///<summary>
-		/// Keywords: Keywords that describe the content of the page. This is consired optional since most modern search engines don't use this anymore
+		/// Post Image: An optional image for your blog post
 		///</summary>
-		[ImplementPropertyType("keywords")]
-		public IEnumerable<string> Keywords
+		[ImplementPropertyType("postImage")]
+		public Umbraco.Web.Models.ImageCropDataSet PostImage
 		{
-			get { return Umbraco.Web.PublishedContentModels.NavigationBase.GetKeywords(this); }
+			get { return this.GetPropertyValue<Umbraco.Web.Models.ImageCropDataSet>("postImage"); }
 		}
 
 		///<summary>
-		/// Description: A brief description of the content on your page. This text is shown below the title in a google search result and also used for Social Sharing Cards. The ideal length is between 130 and 155 characters
+		/// Published Date: This is the date that the document will be shown as published on your website
 		///</summary>
-		[ImplementPropertyType("seoMetaDescription")]
-		public string SeoMetaDescription
+		[ImplementPropertyType("publishedDate")]
+		public DateTime PublishedDate
 		{
-			get { return Umbraco.Web.PublishedContentModels.NavigationBase.GetSeoMetaDescription(this); }
+			get { return this.GetPropertyValue<DateTime>("publishedDate"); }
 		}
 
 		///<summary>
-		/// Hide in Navigation: If you don't want this page to appear in the navigation, check this box
+		/// Social Description: Open Graph Description - Describe the article in one or two lines.
 		///</summary>
-		[ImplementPropertyType("umbracoNavihide")]
-		public bool UmbracoNavihide
+		[ImplementPropertyType("socialDescription")]
+		public string SocialDescription
 		{
-			get { return Umbraco.Web.PublishedContentModels.NavigationBase.GetUmbracoNavihide(this); }
+			get { return this.GetPropertyValue<string>("socialDescription"); }
+		}
+
+		///<summary>
+		/// Tags
+		///</summary>
+		[ImplementPropertyType("tags")]
+		public IEnumerable<string> Tags
+		{
+			get { return this.GetPropertyValue<IEnumerable<string>>("tags"); }
+		}
+
+		///<summary>
+		/// umbracoUrlAlias
+		///</summary>
+		[ImplementPropertyType("umbracoUrlAlias")]
+		public string UmbracoUrlAlias
+		{
+			get { return this.GetPropertyValue<string>("umbracoUrlAlias"); }
+		}
+
+		///<summary>
+		/// Slug: If left blank then umbraco will auto-generate the URL name based on the node name
+		///</summary>
+		[ImplementPropertyType("umbracoUrlName")]
+		public string UmbracoUrlName
+		{
+			get { return this.GetPropertyValue<string>("umbracoUrlName"); }
+		}
+	}
+
+	/// <summary>Articulate Markdown</summary>
+	[PublishedContentModel("ArticulateMarkdown")]
+	public partial class ArticulateMarkdown : ArticulatePost
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "ArticulateMarkdown";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ArticulateMarkdown(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ArticulateMarkdown, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Markdown
+		///</summary>
+		[ImplementPropertyType("markdown")]
+		public object Markdown
+		{
+			get { return this.GetPropertyValue("markdown"); }
+		}
+	}
+
+	/// <summary>Articulate Rich Text</summary>
+	[PublishedContentModel("ArticulateRichText")]
+	public partial class ArticulateRichText : ArticulatePost
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "ArticulateRichText";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ArticulateRichText(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ArticulateRichText, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Rich Text
+		///</summary>
+		[ImplementPropertyType("richText")]
+		public IHtmlString RichText
+		{
+			get { return this.GetPropertyValue<IHtmlString>("richText"); }
 		}
 	}
 

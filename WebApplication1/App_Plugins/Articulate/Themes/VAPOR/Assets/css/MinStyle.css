@@ -1,0 +1,565 @@
+﻿html, body {
+    height: 100%
+}
+
+.sub-menu {
+    visibility: hidden; /* hides sub-menu */
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-2em);
+    z-index: -1;
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    background: #323232;
+}
+
+    .sub-menu > li > a {
+        text-decoration: none;
+    }
+
+.navbar-custom:hover .sub-menu {
+    visibility: visible; /* shows sub-menu */
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0%);
+    transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* presentational */
+
+
+nav a {
+    color: red;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+}
+
+    nav a:hover {
+        color: white;
+    }
+
+nav ul,
+nav ul li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav > ul {
+    background: green;
+    text-align: center;
+}
+
+    nav > ul > li {
+        display: inline-block;
+        border-left: solid 1px #aaa;
+    }
+
+        nav > ul > li:first-child {
+            border-left: none;
+        }
+
+
+ul > li {
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+    border-bottom-color: grey;
+}
+
+
+
+    .navbar-custom .navbar-nav > li > a:hover,
+    .navbar-custom .navbar-nav > li > a:focus,
+    .navbar-custom .navbar-nav > .active > a:hover,
+    .navbar-custom .navbar-nav > .active > a:focus,
+    .navbar-custom .navbar-nav > .open > a {
+        color: green !important;
+    }
+
+
+span {
+    display: block;
+}
+/* footer styles */
+
+
+/* Top Baner Styles */
+
+.videos img {
+    width: 100%;
+    height: auto;
+}
+
+a.video {
+    float: left;
+    position: relative;
+}
+
+    a.video span {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: url("https://douglasgreen.com/demo/responsive-video-play-button/img/play-btn.png") no-repeat;
+        background-position: 50% 50%;
+        background-size: 100%;
+    }
+
+@media screen and (max-width: 480px) {
+    a.video span {
+        background-size: 400%;
+    }
+}
+
+.item {
+    position: relative;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+.smallImage {
+    width: 619px;
+    height: 239px;
+}
+
+.bigImage {
+    height: 478px;
+    margin: -30px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.item img {
+    max-width: 100%;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.item:hover img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+
+.navbar-inverse .navbar-nav > li > a {
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.widget-title {
+    display: block;
+    margin-bottom: 40px;
+    border: solid 1px #e5e5e5;
+    border-bottom: solid 2px #e84b3a;
+}
+
+
+
+    .widget-title span a:hover,
+    .widget-title span a:focus {
+        color: #ffffff;
+        opacity: 0.5;
+    }
+
+    .widget-title span.video-channel__videos {
+        float: right;
+        background-color: transparent;
+        color: #b2b2b2;
+    }
+
+.widget-width__loop .widget-title span,
+.sidebar-before-loop .widget-title span,
+.sidebar-after-loop .widget-title span {
+    display: inline-block;
+    font-size: 24px;
+    font-size: 2.4rem;
+    font-weight: 100;
+    line-height: 40px;
+    margin-left: -1px;
+    margin-top: -1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #e84b3a;
+    color: #ffffff;
+}
+
+
+/**
+ * 10.0 Header
+ */
+.logo-bar {
+    background-color: #ffffff;
+}
+
+.logo .logo__image {
+    max-height: 93px;
+}
+
+.logo .logo__link {
+    display: block;
+    margin: 21px auto 6px auto;
+    text-align: center;
+}
+
+/* logo responsive */
+.logo .logo__link {
+}
+
+@media (min-width: 993px) {
+    .logo .logo__link {
+        display: inline-block;
+        margin: 18px 0 6px -15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .banner__header {
+        display: inline-block;
+        float: right;
+        line-height: 0;
+        margin-top: 15px;
+        margin-right: -15px;
+    }
+}
+
+
+.top-header {
+    margin-bottom: 13px;
+}
+
+/* To social media Icons */
+
+
+/*=========================
+  Icons
+ ================= */
+
+/* footer social icons */
+ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left: 0 !important;
+    padding: 0;
+}
+
+    ul.social-network li {
+        
+        margin: 0 5px;
+    }
+
+
+/* footer social icons */
+.social-network a.icoRss:hover {
+    background-color: #F56505;
+}
+
+.social-network a.icoFacebook:hover {
+    background-color: #3B5998;
+}
+
+.social-network a.icoTwitter:hover {
+    background-color: #33ccff;
+}
+
+.social-network a.icoGoogle:hover {
+    background-color: #BD3518;
+}
+
+.social-network a.icoVimeo:hover {
+    background-color: #0590B8;
+}
+
+.social-network a.icoLinkedin:hover {
+    background-color: #007bb7;
+}
+
+    .social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
+    .social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
+        color: #fff;
+    }
+
+a.socialIcon:hover, .socialHoverClass {
+    color: #44BCDD;
+}
+
+.social-circle li a {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto 0 auto;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.social-circle li i {
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+}
+
+.social-circle li a:hover i, .triggeredHover {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms--transform: rotate(360deg);
+    transform: rotate(360deg);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.social-circle i {
+    color: #fff;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+a {
+    background-color: #D3D3D3;
+}
+
+.social-circle {
+    float: right;
+    margin-bottom: 13px;
+    text-decoration: none;
+    background-color: #333 !important;
+}
+
+.social-top {
+    background-color: #333 !important;
+}
+/*--------------------------- */
+.site__row {
+    padding: 80px;
+    
+}
+
+.sidebar-right {
+    background-color: #f2f2f2;
+    margin-top: 30px;
+}
+
+    .sidebar-right img {
+        width: 100% !important;
+        margin-top: 20px;
+    }
+
+.row > .site__content {
+    padding-left: 0 !important;
+    padding-right: 40px !important;
+}
+
+.site-main > .post-container.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.post-content{
+    margin-top:30px;
+}
+
+.recentPosts {
+    column-count: 2;
+}
+
+  h5 >a:hover {
+     color: #e84b3a;
+    }
+
+  h5 >a{
+       color:black;
+   }
+
+h5{
+    background-color:#fff;
+    color:black;
+}
+
+
+
+/* custom footer*/
+.footer-distributed {
+    background-color: #292c2f;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 55px 50px;
+    margin-top: 80px;
+}
+
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    /* Footer left */
+
+    .footer-distributed .footer-left {
+        width: 40%;
+    }
+
+    /* The company logo */
+
+    .footer-distributed h3 {
+        color: #ffffff;
+        font: normal 36px 'Cookie', cursive;
+        margin: 0;
+    }
+
+        .footer-distributed h3 span {
+            color: #5383d3;
+        }
+
+    /* Footer links */
+
+    .footer-distributed .footer-links {
+        color: #ffffff;
+        margin: 20px 0 12px;
+        padding: 0;
+    }
+
+        .footer-distributed .footer-links a {
+            display: inline-block;
+            line-height: 1.8;
+            text-decoration: none;
+            color: inherit;
+        }
+
+    .footer-distributed .footer-company-name {
+        color: #8f9296;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
+
+    /* Footer Center */
+
+    .footer-distributed .footer-center {
+        width: 35%;
+    }
+
+        .footer-distributed .footer-center i {
+            background-color: #33383b;
+            color: #ffffff;
+            font-size: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            margin: 10px 15px;
+            vertical-align: middle;
+        }
+
+            .footer-distributed .footer-center i.fa-envelope {
+                font-size: 17px;
+                line-height: 38px;
+            }
+
+        .footer-distributed .footer-center p {
+            display: inline-block;
+            color: #ffffff;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+            .footer-distributed .footer-center p span {
+                display: block;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 2;
+            }
+
+            .footer-distributed .footer-center p a {
+                color: #5383d3;
+                text-decoration: none;
+                ;
+            }
+
+
+    /* Footer Right */
+
+    .footer-distributed .footer-right {
+        width: 20%;
+    }
+
+    .footer-distributed .footer-company-about {
+        line-height: 20px;
+        color: #92999f;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+    }
+
+        .footer-distributed .footer-company-about span {
+            display: block;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+    .footer-distributed .footer-icons {
+        margin-top: 25px;
+    }
+
+        .footer-distributed .footer-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            background-color: #33383b;
+            border-radius: 2px;
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+    .footer-distributed {
+        font: bold 14px sans-serif;
+    }
+
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+            .footer-distributed .footer-center i {
+                margin-left: 0;
+            }
+}
+
+.content-post{
+    margin-top:50px;
+}

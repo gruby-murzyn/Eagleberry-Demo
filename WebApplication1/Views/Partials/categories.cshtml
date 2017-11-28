@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Articulate
+
+@{
+    var blogRoot = Umbraco.ContentAtRoot().DescendantsOrSelf("Articulate").FirstOrDefault();
+    var blogArchive = blogRoot.Children.First();
+
+       
+    
+    foreach(var blogposts in blogArchive.Children.Where("Visible")){
+  
+        <img src="@blogposts.GetPropertyValue("postImage")" />
+        <h5><a href="@blogposts.Url">@blogposts.Name</a></h5>
+       
+    }
+}

@@ -1,24 +1,149 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Blogpost>
-@using ContentModels = Umbraco.Web.PublishedContentModels;
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-	Layout = "Master.cshtml";
+	Layout = "MinMaster.cshtml";
 }
+
+@* the fun starts here *@
 
 
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 
-<section class="section">
-    <div class="container">
-        <article>
-            <div class="blogpost-meta">
-                <small class="blogpost-date">@Model.Content.CreateDate.ToShortDateString()</small>
-                <span class="blogpost-cat">
-                    @Html.Partial("~/Views/Partials/CategoryLinks.cshtml", Model.Content.Categories)
-                </span>
+     <div class="container">
+    <div class="row">
+        <div class="col-sm-8 midle-content">
+            <main class="content" role="main">
+
+                <article class="post">
+
+                    <header>
+                        <h1 class="post-title">@Model.Name</h1>
+
+
+                    </header>
+
+                    <section class="post-content">
+
+                    <iframe width="740" height="416" src="https://www.youtube.com/embed/nTDNLUzjkpg" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+                        @Model.Body
+                    </section>
+
+                    <section class="share">
+                        <p class="info prompt">Share this post</p>
+                        <a href="http://twitter.com/share?text=@Model.Name&url=@Model.UrlWithDomain()"
+                           onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <i class="fa fa-2x fa-fw fa-twitter"></i> <span class="hidden">Twitter</span>
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=@Model.UrlWithDomain()"
+                           onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                            <i class="fa fa-2x fa-fw fa-facebook-square"></i> <span class="hidden">Facebook</span>
+                        </a>
+                        <a href="https://plus.google.com/share?url=@Model.UrlWithDomain()"
+                           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                            <i class="fa fa-2x fa-fw fa-google-plus-square"></i> <span class="hidden">Google+</span>
+                        </a>
+                    </section>
+
+                    <footer class="post-footer">
+
+                        @if (!Model.Author.Name.IsNullOrWhiteSpace())
+            {
+                            <section class="author">
+                                @if (!Model.Author.Image.IsNullOrWhiteSpace())
+                                {
+                                    <div class="authorimage" style="background: url(@Model.Author.Image)"></div>
+                                }
+                                <p class="attr">Author</p>
+                                <h4>
+                                    @if (!Model.Author.BlogUrl.IsNullOrWhiteSpace())
+                                    {
+                                        <a href="@Model.Author.BlogUrl">@Model.Author.Name</a>
+                                    }
+                                    else
+                                    {
+                                        @Model.Author.Name
+                                    }
+                                </h4>
+                                @if (!Model.Author.Bio.IsNullOrWhiteSpace())
+                                {
+                                    <p class="bio">@Model.Author.Bio</p>
+                                }
+                            </section>
+                        }
+
+                    </footer>
+
+                    @if (Model.EnableComments)
+                    {
+                        @Html.ThemedPartial(Model, "CommentsDisqus")
+                        @*@Html.ThemedPartial(Model, "CommentsGooglePlus")*@
+                        @*@Html.ThemedPartial(Model, "CommentsFacebook")*@
+                    }
+                </article>
+            </main>
+        </div>
+    <div class="col-sm-4 sidebar-right">
+    
+            <div class="post">
+                @Html.Partial("categories")
+                
             </div>
-            <h3>@Model.Content.Excerpt</h3>
-            @Html.GetGridHtml(Model.Content, "bodyText", "bootstrap3-fluid")
-            <!-- todo: implement discus comments -->
-        </article>
+        </div>
+
     </div>
-</section>
+
+
+ 
+
+  
+    <div class="footer navbar-fixed-bottom">
+        <footer class="footer bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item">
+                                <a href="#">About</a>
+                            </li>
+                            <li class="list-inline-item">&sdot;</li>
+                            <li class="list-inline-item">
+                                <a href="#">Contact</a>
+                            </li>
+                            <li class="list-inline-item">&sdot;</li>
+                            <li class="list-inline-item">
+                                <a href="#">Terms of Use</a>
+                            </li>
+                            <li class="list-inline-item">&sdot;</li>
+                            <li class="list-inline-item">
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                        </ul>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Start Bootstrap 2017. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mr-3">
+                                <a href="#">
+                                    <i class="fa fa-facebook fa-2x fa-fw"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item mr-3">
+                                <a href="#">
+                                    <i class="fa fa-twitter fa-2x fa-fw"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fa fa-instagram fa-2x fa-fw"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+         </footer> <!--The end of footer-->
+        </div>
+    </div> <!--The end of Container-->
+
+
+   

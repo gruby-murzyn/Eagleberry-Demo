@@ -1,0 +1,67 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@section content{
+
+        @if (Model.Content.HasValue("carouselImages"))
+        {
+              
+    
+         
+            
+            
+            var imgList = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("carouselImages");
+            var imagesCollection = Umbraco.TypedMedia(imgList).Where(x => x != null);
+            
+    
+            
+            
+                
+            <text>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+            <ol class="carousel-indicators">
+            </text>
+                
+        for (int i = 0; i < imagesCollection.Count<IPublishedContent>(); i++)
+        {
+                string indicatoractive = "";
+                if (i == 0)
+                {
+                indicatoractive = "active";
+                }
+                <li data-target="#myCarousel" data-slide-to="0" class='@indicatoractive'></li>
+        }
+        
+        
+            @:</ol>
+            
+    @:<div class="carousel-inner">
+                
+                int count = 0;
+                string activeclass = "";
+                
+    foreach (var imageItem in imagesCollection)
+    {
+                
+        if (count == 0)
+                {
+                activeclass = "item active";
+                count++;
+                }
+                else
+                {
+                activeclass = "item";
+                }
+                
+    <div class='@activeclass'>
+                
+        <img src='@imageItem.Url' />
+    </div>
+    }
+    @:</div>
+                @: <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                @: <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                @:</div><!-- /.carousel -->
+                
+    }
+}
